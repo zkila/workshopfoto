@@ -1,0 +1,31 @@
+---
+import Container from "./ui/Container.astro";
+---
+
+<header class="sticky
+  top-0
+  z-50
+  bg-background/90
+  backdrop-blur">
+  <Container>
+    <nav class="flex
+      justify-between
+      items-center
+      py-6">
+      <a href="/" class="text-2xl
+        font-heading"> Through Indonesia </a>
+
+      <div class="hidden
+        md:flex
+        gap-8">
+        <a href="/portfolio"> Portfolio </a>
+
+        <a href="/workshops"> Workshops </a>
+
+        <a href="/about"> About </a>
+
+        <a href="/contact"> Contact </a>
+      </div>
+    </nav>
+  </Container>
+</header>

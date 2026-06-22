@@ -1,0 +1,36 @@
+---
+const { href = "#", variant = "primary" } = Astro.props as {
+  href?: string;
+  variant?: "primary" | "secondary";
+};
+
+const variants = {
+  primary: "bg-accent text-black",
+
+  secondary: "border border-white text-white",
+};
+
+const buttonClasses = {
+  primary: "bg-accent text-black",
+  secondary: "border border-primary text-primary",
+};
+---
+
+<a
+  href={href}
+  class={`
+    inline-flex
+    items-center
+    justify-center
+    px-8
+    py-4
+    rounded-full
+    font-semibold
+    transition-all
+    duration-300
+    hover:scale-105
+    ${variants[variant]}
+  `}
+>
+  <slot />
+</a>

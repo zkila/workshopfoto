@@ -1,1 +1,53 @@
 @import "tailwindcss";
+
+/* Theme Tokens */
+
+@theme {
+  --color-background: #0f0f0f;
+  --color-surface: #181818;
+
+  --color-primary: #ffffff;
+  --color-secondary: #a0a0a0;
+  --color-tertiary: #d4af37;
+
+  --color-accent: #d4af37;
+
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Inter", sans-serif;
+
+  --container-content: 1440px;
+}
+
+/* Global Styles */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-background text-primary;
+  font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+a {
+  @apply transition-all duration-300;
+}
+
+::selection {
+  background: #d4af37;
+  color: black;
+}

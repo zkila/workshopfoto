@@ -1,19 +1,37 @@
 ---
+import MainLayout from "../layout/MainLayout.astro";
 
+import Container from "../components/ui/Container.astro";
+
+import Button from "../components/ui/Button.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1 class="text-4xl font-bold">
-   			Hello World
-		</h1>
-	</body>
-</html>
+<MainLayout title="Through Indonesia">
+  <section
+    class="min-h-screen
+  flex
+  items-center
+  bg-cover
+  bg-center
+  bg-no-repeat"
+    style="background-image: linear-gradient(to left, rgba(0,0,0,0) 0%, rgba(0,0,0,0.85) 100%), url('/public/hero.jpeg')"
+  >
+    <Container>
+      <div class="max-w-4xl">
+        <h1 class="text-6xl
+        md:text-8xl
+        mb-8">
+          Landscape Photography Workshops & Adventures
+        </h1>
+
+        <p class="text-tertiary
+        text-xl
+        mb-10">
+          Capturing nature's most extraordinary moments.
+        </p>
+
+        <Button href="/portfolio"> Explore Portfolio </Button>
+      </div>
+    </Container>
+  </section>
+</MainLayout>
