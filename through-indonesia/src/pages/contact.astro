@@ -1,0 +1,65 @@
+---
+import MainLayout from "../layout/MainLayout.astro";
+import Container from "../components/ui/Container.astro";
+import Button from "../components/ui/Button.astro";
+---
+
+<MainLayout title="Contact">
+  <Container>
+    <h1 class="text-3xl font-bold mb-6">Contact</h1>
+    <form
+      method="post"
+      action="#"
+      onsubmit="alert('Form submitted (demo)');return false;"
+      class="flex flex-col gap-3"
+    >
+      <label class="flex flex-col text-sm flex-1">
+        Your name
+        <input
+          type="text"
+          name="name"
+          placeholder="Jane Doe"
+          required
+          class="mt-4 p-2.5 border border-gray-300 rounded-md text-sm focus:outline-none focus:border-blue-500"
+        />
+      </label>
+
+      <div class="border-t border-accent/20 my-1"></div>
+      <label class="flex flex-col text-sm flex-1">
+        Your email
+        <input
+          type="email"
+          name="email"
+          placeholder="you@example.com"
+          required
+          class="mt-4 p-2.5 border border-gray-300 rounded-md text-sm focus:outline-none focus:border-blue-500"
+        />
+      </label>
+
+      <div class="border-t border-accent/20 my-1"></div>
+
+      <label class="flex flex-col text-sm">
+        Subject
+        <input
+          type="text"
+          name="subject"
+          placeholder="Subject"
+          class="mt-4 p-2.5 border border-gray-300 rounded-md text-sm focus:outline-none focus:border-blue-500"
+        />
+      </label>
+
+      <div class="border-t border-accent/20 my-1"></div>
+
+      <label class="flex flex-col text-sm">
+        Your message (optional)
+        <textarea
+          name="message"
+          placeholder="Write your message here..."
+          class="mt-4 p-2.5 border border-gray-300 rounded-md text-sm min-h-35 resize-vertical focus:outline-none focus:border-blue-500"
+        ></textarea>
+      </label>
+
+      <Button type="submit">Send message</Button>
+    </form>
+  </Container>
+</MainLayout>

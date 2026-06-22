@@ -1,0 +1,74 @@
+---
+import MainLayout from "../layout/MainLayout.astro";
+
+import Container from "../components/ui/Container.astro";
+
+import Button from "../components/ui/Button.astro";
+
+import profileImage from "../assets/general/profile.png";
+---
+
+<MainLayout title="Eko's Page - Through Indonesia">
+  <Container>
+    <div
+      class="flex
+      flex-col
+      md:flex-row
+      items-top
+      gap-6
+      justify-between"
+    >
+      <div class="max-w-3xl">
+        <h1 class="text-6xl
+        md:text-8xl
+        mb-6">Meet Eko</h1>
+
+        <p class="text-accent
+        text-xl
+        mb-6">
+          Photographer • Expedition Leader • Local Expert
+        </p>
+
+        <p class="text-primary
+        text-xl
+        mb-6">
+          For more than a decade, I have explored Indonesia's diverse
+          landscapes, cultures, and wildlife with a camera in hand.
+        </p>
+
+        <p class="text-primary
+        text-xl
+        mb-6">
+          My passion extends beyond photography. I believe that the most
+          meaningful journeys come from genuine connections—with people, places,
+          and the stories that make each destination unique.
+        </p>
+
+        <p class="text-primary
+        text-xl
+        mb-6">
+          Through years of leading private photography journeys and expeditions
+          across Indonesia, I have developed a deep understanding of both the
+          destinations and the logistics required to create seamless and
+          rewarding travel experiences.
+        </p>
+
+        <p class="text-primary
+        text-xl
+        mb-6">
+          Whether tracking orangutans in the rainforests of Borneo, documenting
+          traditional cultures in remote villages, or capturing sunrise across
+          volcanic landscapes, my goal is simple: to help travelers experience
+          Indonesia in a way that is authentic, inspiring, and unforgettable.
+        </p>
+      </div>
+      <div class="w-full ml-auto">
+        <img
+          src={profileImage.src}
+          alt="Eko Sumartopo"
+          class="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+  </Container>
+</MainLayout>
