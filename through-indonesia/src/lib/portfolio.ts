@@ -1,58 +1,91 @@
+
+
 import type { ImageMetadata } from "astro";
+
+
+export interface GalleryImage {
+  url: string;
+  filename: string;
+}
+
 
 export interface Portfolio {
   slug: string;
   title: string;
-  images: ImageMetadata[];
+  images: GalleryImage[];
+}
+
+
+function loadLocalImages(
+  images: Record<string, { default: ImageMetadata }>
+): GalleryImage[] {
+  return Object.entries(images)
+    .sort(([a], [b]) =>
+      a.localeCompare(b, undefined, { numeric: true })
+    )
+    .map(([path, image]) => ({
+      url: image.default.src,
+      filename:
+        path
+          .split("/")
+          .pop()
+          ?.replace(/\.[^/.]+$/, "") ??
+        "Untitled",
+    }));
 }
 
 
 const portfolios: Record<string, Omit<Portfolio, "slug">> = {
+
   antarctica: {
     title: "Antarctica",
 
-    images: Object.values(
-      import.meta.glob<ImageMetadata>(
+    images: loadLocalImages(
+      import.meta.glob(
         "../assets/portfolio/antarcticapage/*.{png,jpg,jpeg,webp}",
         {
           eager: true,
-          import: "default",
         }
       )
     ),
   },
 
-pakistan: {
+
+  pakistan: {
     title: "Pakistan",
 
-    images: Object.values(
-      import.meta.glob<ImageMetadata>(
+    images: loadLocalImages(
+      import.meta.glob(
         "../assets/portfolio/pakistanpage/*.{png,jpg,jpeg,webp}",
         {
           eager: true,
-          import: "default",
         }
       )
     ),
   },
+
 
   indonesia: {
     title: "Indonesia",
 
-    images: Object.values(
-      import.meta.glob<ImageMetadata>(
+    images: loadLocalImages(
+      import.meta.glob(
         "../assets/portfolio/indonesiapage/*.{png,jpg,jpeg,webp}",
         {
           eager: true,
-          import: "default",
         }
       )
     ),
   },
+
 };
 
 
-export function getPortfolio(slug: string): Portfolio | null {
+
+export function getPortfolio(
+  slug: string
+): Portfolio | null {
+
   const item = portfolios[slug];
 
   if (!item) return null;
@@ -66,9 +99,11 @@ export function getPortfolio(slug: string): Portfolio | null {
 
 
 export function getAllPortfolios() {
-  return Object.entries(portfolios).map(([slug, data]) => ({
-    slug,
-    title: data.title,
-    images: data.images,
-  }));
+  return Object.entries(portfolios).map(
+    ([slug, data]) => ({
+      slug,
+      title: data.title,
+      thumbnail: data.images[0],
+    })
+  );
 }

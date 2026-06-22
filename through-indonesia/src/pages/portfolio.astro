@@ -12,7 +12,7 @@ const portfolios = getAllPortfolios();
     {
       portfolios.map((item) => (
         <a href={`/portfolio/${item.slug}`}>
-          <PortfolioCard title={item.title} image={item.images[0]} />
+          <PortfolioCard title={item.title} image={item.thumbnail} />
         </a>
       ))
     }

@@ -1,8 +1,9 @@
 ---
-import { Image } from "astro:assets";
-
 interface Props {
-  image: ImageMetadata;
+  image: {
+    url: string;
+    filename: string;
+  };
   title: string;
 }
 
@@ -11,8 +12,8 @@ const { image, title } = Astro.props;
 
 <div class="overflow-hidden group">
   <div class="w-full overflow-hidden aspect-square">
-    <Image
-      src={image}
+    <img
+      src={image.url}
       alt={title}
       class="w-full
         h-full

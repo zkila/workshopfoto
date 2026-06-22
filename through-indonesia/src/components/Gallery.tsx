@@ -1,8 +1,12 @@
 import { useState, useEffect } from "react";
-import type { ImageMetadata } from "astro";
+
+interface GalleryImage {
+  url: string;
+  filename: string;
+}
 
 interface GalleryProps {
-  images: ImageMetadata[];
+  images: GalleryImage[];
 }
 
 export default function Gallery({ images }: GalleryProps) {
@@ -41,21 +45,21 @@ export default function Gallery({ images }: GalleryProps) {
       <div className="grid grid-cols-3 gap-1">
         {images.map((img, index) => (
           <button
-            key={index}
+            key={img.filename}
             onClick={() => setSelectedIndex(index)}
             className="overflow-hidden"
           >
             <img
-              src={img.src}
-              alt={`Image ${index + 1}`}
+              src={img.url}
+              alt={img.filename}
               className="
-    w-full
-    aspect-square
-    object-cover
-    cursor-pointer
-    hover:scale-105
-    transition-transform
-  "
+                w-full
+                aspect-square
+                object-cover
+                cursor-pointer
+                hover:scale-105
+                transition-transform
+              "
             />
           </button>
         ))}
@@ -63,7 +67,15 @@ export default function Gallery({ images }: GalleryProps) {
 
       {selected && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90"
+          className="
+            fixed
+            inset-0
+            z-50
+            flex
+            items-center
+            justify-center
+            bg-black/90
+          "
           onClick={() => setSelectedIndex(null)}
         >
           <button
@@ -80,9 +92,13 @@ export default function Gallery({ images }: GalleryProps) {
           </button>
 
           <img
-            src={selected.src}
-            alt={`Image ${selectedIndex! + 1}`}
-            className="max-w-[90vw] max-h-[90vh] object-contain"
+            src={selected.url}
+            alt={selected.filename}
+            className="
+              max-w-[90vw]
+              max-h-[90vh]
+              object-contain
+            "
             onClick={(e) => e.stopPropagation()}
           />
 
@@ -107,7 +123,6 @@ export default function Gallery({ images }: GalleryProps) {
             ×
           </button>
 
-          {/* Counter */}
           <div className="absolute bottom-4 text-white">
             {selectedIndex! + 1} / {images.length}
           </div>

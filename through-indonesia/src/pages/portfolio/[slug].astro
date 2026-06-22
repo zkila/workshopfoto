@@ -16,7 +16,11 @@ export function getStaticPaths() {
 
 const { slug } = Astro.params;
 
-const portfolio = getPortfolio(slug!);
+if (!slug) {
+  throw new Error("Missing portfolio slug");
+}
+
+const portfolio = getPortfolio(slug);
 
 if (!portfolio) {
   return Astro.redirect("/404");
@@ -24,9 +28,5 @@ if (!portfolio) {
 ---
 
 <MainLayout title={`${portfolio.title} - Through Indonesia`}>
-  <h1 class="text-4xl text-center font-bold mb-8">
-    {portfolio.title}
-  </h1>
-
   <Gallery images={portfolio.images} client:visible />
 </MainLayout>
