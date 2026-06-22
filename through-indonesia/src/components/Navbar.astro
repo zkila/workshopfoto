@@ -8,24 +8,102 @@ import Container from "./ui/Container.astro";
   bg-background/90
   backdrop-blur">
   <Container>
-    <nav class="flex
-      justify-between
-      items-center
-      py-6">
+    <nav class="flex items-center justify-between py-6">
       <a href="/" class="text-2xl
         font-heading"> Through Indonesia </a>
 
-      <div class="hidden
-        md:flex
-        gap-8">
-        <a href="/portfolio"> Portfolio </a>
+      <div class="hidden md:flex ml-auto">
+        <a href="/portfolio" class="nav-link">Portfolio</a>
+        <a href="/workshops" class="nav-link">Workshops</a>
+        <a href="/about" class="nav-link">About</a>
+        <a href="/contact" class="nav-link">Contact</a>
+      </div>
 
-        <a href="/workshops"> Workshops </a>
+      <div id="menu-wrapper" class="relative">
+        <button
+          id="menu-btn"
+          class="md:hidden transition-transform duration-300"
+          aria-label="Toggle menu"
+        >
+          ☰
+        </button>
 
-        <a href="/about"> About </a>
-
-        <a href="/contact"> Contact </a>
+        <div
+          id="mobile-menu"
+          class="absolute
+      top-full
+      right-0
+      w-35
+      bg-background/90
+      backdrop-blur
+      flex-col
+      gap-8
+      p-4
+      rounded-lg
+      shadow-lg
+      opacity-0
+      scale-95
+      pointer-events-none
+      transition-all
+      duration-200
+      ease-out
+      text-right"
+        >
+          <a href="/portfolio" class="text-lg">Portfolio</a>
+          <div class="border-t border-accent/20 my-4"></div>
+          <a href="/workshops" class="text-lg">Workshops</a>
+          <div class="border-t border-accent/20 my-4"></div>
+          <a href="/about" class="text-lg">About</a>
+          <div class="border-t border-accent/20 my-4"></div>
+          <a href="/contact" class="text-lg">Contact</a>
+        </div>
       </div>
     </nav>
+
+    <script>
+      const wrapper = document.getElementById("menu-wrapper");
+      const btn = document.getElementById("menu-btn");
+      const menu = document.getElementById("mobile-menu");
+
+      let locked = false;
+
+      function openMenu() {
+        menu?.classList.remove("opacity-0", "scale-95", "pointer-events-none");
+
+        btn?.classList.add("text-tertiary");
+
+        menu?.classList.add("opacity-100", "scale-100", "pointer-events-auto");
+      }
+
+      function closeMenu() {
+        if (locked) return;
+
+        menu?.classList.add("opacity-0", "scale-95", "pointer-events-none");
+
+        btn?.classList.remove("text-tertiary");
+
+        menu?.classList.remove(
+          "opacity-100",
+          "scale-100",
+          "pointer-events-auto",
+        );
+      }
+
+      // hover behavior
+      wrapper?.addEventListener("mouseenter", openMenu);
+      wrapper?.addEventListener("mouseleave", closeMenu);
+
+      // click locks/unlocks
+      btn?.addEventListener("click", () => {
+        locked = !locked;
+        btn?.classList.toggle("rotate-90", locked);
+
+        if (locked) {
+          openMenu();
+        } else {
+          closeMenu();
+        }
+      });
+    </script>
   </Container>
 </header>
