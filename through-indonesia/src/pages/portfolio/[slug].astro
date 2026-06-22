@@ -1,0 +1,32 @@
+---
+import MainLayout from "../../layout/MainLayout.astro";
+import Gallery from "../../components/Gallery";
+
+import { getPortfolio, getAllPortfolios } from "../../lib/portfolio";
+
+export function getStaticPaths() {
+  const portfolios = getAllPortfolios();
+
+  return portfolios.map((portfolio) => ({
+    params: {
+      slug: portfolio.slug,
+    },
+  }));
+}
+
+const { slug } = Astro.params;
+
+const portfolio = getPortfolio(slug!);
+
+if (!portfolio) {
+  return Astro.redirect("/404");
+}
+---
+
+<MainLayout title={`${portfolio.title} - Through Indonesia`}>
+  <h1 class="text-4xl text-center font-bold mb-8">
+    {portfolio.title}
+  </h1>
+
+  <Gallery images={portfolio.images} client:visible />
+</MainLayout>

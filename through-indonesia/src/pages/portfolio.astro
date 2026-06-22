@@ -1,0 +1,20 @@
+---
+import { getAllPortfolios } from "../lib/portfolio";
+import PortfolioCard from "../components/PortfolioCard.astro";
+
+import MainLayout from "../layout/MainLayout.astro";
+
+const portfolios = getAllPortfolios();
+---
+
+<MainLayout>
+  <div class="grid grid-cols-3">
+    {
+      portfolios.map((item) => (
+        <a href={`/portfolio/${item.slug}`}>
+          <PortfolioCard title={item.title} image={item.images[0]} />
+        </a>
+      ))
+    }
+  </div>
+</MainLayout>
