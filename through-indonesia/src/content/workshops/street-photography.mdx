@@ -23,6 +23,12 @@ notIncluded:
 instructor: "Eko Sumartopo"
 ---
 
+import Gallery from "../../components/Gallery.tsx";
+
+import img1 from "../../assets/portfolio/pakistanpage/PANO0001-Pano-5-1030x824.jpg";
+import img2 from "../../assets/portfolio/pakistanpage/DSC_2288-2-1030x749.jpg";
+import img3 from "../../assets/portfolio/pakistanpage/DJI_20250404154002_0201_D-HDR-Pano-45-1030x824.jpg";
+
 # Itinerary
 
 ## Day 1 - January 16, 2027
@@ -35,7 +41,23 @@ Departure from Punta Arenas. Expedition starts from the Bellinsgausen polar stat
 
 ## Day 3 - January 18, 2027
 
-Our itinerary serves as a flexible guide, with stops and timing adjusted based on weather conditions. Today, we set out to explore Yankee Harbour and Halfmoon Island.
+<div class="p-8">
+  <Gallery
+    images={[
+      { url: img1.src, filename: "PANO0001-Pano-5-1030x824.jpg" },
+      { url: img2.src, filename: "DSC_2288-2-1030x749.jpg" },
+      {
+        url: img3.src,
+        filename: "DJI_20250404154002_0201_D-HDR-Pano-45-1030x824.jpg",
+      },
+    ]}
+    client:visible
+  />
+</div>
+
+Our itinerary serves as a flexible guide, with stops and timing adjusted based
+on weather conditions. Today, we set out to explore Yankee Harbour and Halfmoon
+Island.
 
 Yankee Harbour, a wildlife sanctuary with pebble-lined shores, is home to thriving colonies of gentoo penguins, elephant seals, and fur seals. Halfmoon Island, true to its name, features a striking crescent shape and vibrant patches of Antarctic moss. Here, you’ll have the chance to encounter elephant seals, gentoo and chinstrap penguins, and giant petrels, offering an incredible opportunity to immerse yourself in Antarctica’s diverse ecosystem.
 

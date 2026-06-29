@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 
 import tailwindcss from '@tailwindcss/vite';
 
+import mdx from "@astrojs/mdx";
 
 import react from "@astrojs/react";
 
@@ -13,7 +14,7 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  integrations: [react()]
+  integrations: [react(),mdx()],
 });
 
 export const colors = {
