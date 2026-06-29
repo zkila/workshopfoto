@@ -9,25 +9,56 @@ featured: true
 thumbnail: "/src/assets/portfolio/japan.png"
 hires: "/src/assets/portfolio/pakistanpage/PANO0001-Pano-9-45-1030x824.jpg"
 registrationLink: "https://forms.google.com/example"
+included:
+  - Roundtrip flight from Punta Arenas
+  - Accommodation in Punta Arenas
+  - Accommodation aboard the ship
+  - Photography workshops
+  - All meals
+
+notIncluded:
+  - Flights to Punta Arenas
+  - Travel insurance
+  - Personal expenses
 ---
 
-## What You'll Learn
+# Itinerary
 
-- Composition techniques
-- Working with natural light
-- Approaching strangers respectfully
+## Day 1 - January 16, 2027
 
-## Requirements
+Arrive in Punta Arenas and take the time to unwind after your long journey. Enjoy a relaxing evening and a good night’s sleep at our hotel as we prepare for the exciting adventure ahead.
 
-- Any camera
-- Comfortable walking shoes
+## Day 2 - January 17, 2027
 
-## Schedule
+Departure from Punta Arenas. Expedition starts from the Bellinsgausen polar station located on the King George island. Please be aware that the departure time for Antarctica can fluctuate due to various factors such as weather and runway conditions.
 
-### Morning
+## Day 3 - January 18, 2027
 
-Introduction and shooting exercises.
+|
 
-### Afternoon
+Our itinerary serves as a flexible guide, with stops and timing adjusted based on weather conditions. Today, we set out to explore Yankee Harbour and Halfmoon Island.
 
-Guided photo walk and critique session.
+Yankee Harbour, a wildlife sanctuary with pebble-lined shores, is home to thriving colonies of gentoo penguins, elephant seals, and fur seals. Halfmoon Island, true to its name, features a striking crescent shape and vibrant patches of Antarctic moss. Here, you’ll have the chance to encounter elephant seals, gentoo and chinstrap penguins, and giant petrels, offering an incredible opportunity to immerse yourself in Antarctica’s diverse ecosystem.
+
+# What to bring
+
+## Gear
+
+- DSLR camera with tripod and remote shutter release
+- A wide angle lens. For example, Nikkor 14-24 or Canon 17-40. Best lens for use in wide-angle scenes or architecture photography
+- A middle-zoom lens such as a 24-70 mm
+- A telephoto zoom lens, such as a 70-200 mm. 300 mm with 1.5 TC or 500 mm, 600 mm are recommended for wildlife and bird photography. Be sure to have additional tripod mount to this lens.
+
+## Wear
+
+- Waterproof and windproof jacket (consider the average temperature +5
+- +10 C at nights and +8 – +15 C during the daytime)
+- Waterproof pants
+- Warm jacket and thermal pants
+- Wellingtons or fishing boots
+
+The full list will be sent by mail to participants.
+
+# Tour Leaders:
+
+## - Eko Sumartopo

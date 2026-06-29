@@ -2,6 +2,8 @@
 import { getCollection, render } from "astro:content";
 
 import MainLayout from "../../layout/MainLayout.astro";
+import Container from "../../components/ui/Container.astro";
+import Button from "../../components/ui/Button.astro";
 
 export async function getStaticPaths() {
   const workshops = await getCollection("workshops");
@@ -21,48 +23,99 @@ const { workshop } = Astro.props;
 const { Content } = await render(workshop);
 ---
 
-<MainLayout>
-  <div class="p-4 flex flex-col items-center justify-center">
-    <h1 class="font-bold text-4xl mb-10">{workshop.data.title}</h1>
+<MainLayout title={workshop.data.title}>
+  <Container>
+    <div class="p-4 flex flex-col items-center justify-center">
+      <h1 class="font-bold text-4xl mb-10">{workshop.data.title}</h1>
 
-    <img
-      src={workshop.data.hires}
-      alt={workshop.data.title}
-      class="aspect-video w-4xl object-cover"
-    />
+      <img
+        src={workshop.data.hires}
+        alt={workshop.data.title}
+        class="aspect-video w-4xl object-cover"
+      />
 
-    <div class="p-4">
-      <p>{workshop.data.description}</p>
+      <div class="p-4">
+        <p>{workshop.data.description}</p>
+      </div>
     </div>
-  </div>
 
-  <div>
-    <strong>Date:</strong>
-    {workshop.data.date}
-  </div>
+    <div
+      class="w-full md:w-2/3 mx-auto flex flex-col shadow-xs rounded-lg overflow-hidden mb-8"
+    >
+      <table class="table-fixed">
+        <tbody>
+          <tr
+            class="odd:bg-gray-900 even:bg-neutral-secondary-soft border-b border-gray-700"
+          >
+            <td class="px-3 py-2"><strong>Date</strong></td>
+            <td>: {workshop.data.date}</td>
+          </tr>
+          <tr
+            class="odd:bg-gray-900 even:bg-neutral-secondary-soft border-b border-gray-700"
+          >
+            <td class="px-3 py-2"><strong>Location</strong></td>
+            <td>: {workshop.data.location}</td>
+          </tr>
+          <tr
+            class="odd:bg-gray-900 even:bg-neutral-secondary-soft border-b border-gray-700"
+          >
+            <td class="px-3 py-2"><strong>Price</strong></td>
+            <td>: ${workshop.data.price}</td>
+          </tr>
+          <tr
+            class="odd:bg-gray-900 even:bg-neutral-secondary-soft border-b border-gray-700"
+          >
+            <td class="px-3 py-2"><strong>Seats</strong></td>
+            <td>: {workshop.data.seats}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-  <div>
-    <strong>Location:</strong>
-    {workshop.data.location}
-  </div>
+    <hr class="border-gray-500 mb-8" />
 
-  <div>
-    <strong>Price:</strong> ${workshop.data.price}
-  </div>
+    <div
+      class="w-full md:w-2/3 mx-auto flex flex-col shadow-xs rounded-lg overflow-hidden mb-8"
+    >
+      <table class="table-fixed">
+        <thead>
+          <tr>
+            <th class="px-3 py-2">Included</th>
+            <th class="px-3 py-2">Not Included</th>
+          </tr>
+          <tbody>
+            <tr>
+              <td class="px-3 py-2">
+                <ul class="list-disc list-inside">
+                  {workshop.data.included.map((item) => <li>{item}</li>)}
+                </ul>
+              </td>
+              <td class="px-3 py-2">
+                <ul class="list-disc list-inside">
+                  {workshop.data.notIncluded.map((item) => <li>{item}</li>)}
+                </ul>
+              </td>
+            </tr>
+          </tbody></thead
+        >
+      </table>
+    </div>
 
-  <div>
-    <strong>Seats:</strong>
-    {workshop.data.seats}
-  </div>
-
-  {
-    workshop.data.registrationLink && (
-      <a href={workshop.data.registrationLink} target="_blank">
-        Register Now
-      </a>
-    )
-  }
-
-  <hr />
-  <Content />
+    <hr class="border-gray-500" />
+    <div class="workshop-content"><Content /></div>
+    <hr />
+    <div class="py-8 items-center flex-col mx-auto flex gap-4 justify-center">
+      {
+        workshop.data.registrationLink && (
+          <Button
+            href={workshop.data.registrationLink}
+            target="_blank"
+            variant="primary"
+          >
+            Register Now
+          </Button>
+        )
+      }
+    </div>
+  </Container>
 </MainLayout>

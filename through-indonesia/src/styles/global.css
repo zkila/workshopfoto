@@ -55,3 +55,44 @@ a {
 .nav-link {
   @apply px-4 py-2 rounded-md transition-colors hover:bg-accent/10 hover:text-accent;
 }
+
+.workshop-content {
+  justify-content: center;
+}
+
+.workshop-content h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.workshop-content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+}
+
+.workshop-content h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.workshop-content p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+
+.workshop-content ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+  list-style: disc;
+}
+
+.workshop-content li {
+  margin-bottom: 0.5rem;
+  list-style: disc;
+}

@@ -8,8 +8,6 @@ const workshops = await getCollection("workshops");
 workshops.sort(
   (a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime(),
 );
-
-console.log("WORKSHOPS:", workshops);
 ---
 
 <MainLayout

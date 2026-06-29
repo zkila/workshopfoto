@@ -17,6 +17,8 @@ const workshops = defineCollection({
     thumbnail: z.string(),
     hires:z.string().optional(),
     registrationLink: z.string().optional(),
+    included: z.array(z.string()),
+    notIncluded: z.array(z.string()),
   }),
 });
 
