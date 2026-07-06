@@ -1,11 +1,19 @@
 ---
-interface Props {
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"button"> {
   href?: string;
-  type?: "button" | "submit" | "reset";
   variant?: "primary" | "secondary";
+  type?: "button" | "submit" | "reset";
 }
 
-const { href, type = "button", variant = "primary" } = Astro.props;
+const {
+  href,
+  variant = "primary",
+  type = "button",
+  class: className,
+  ...attrs
+} = Astro.props;
 
 const variants = {
   primary: "bg-accent text-black",
@@ -16,6 +24,7 @@ const variants = {
 {
   href ? (
     <a
+      {...attrs}
       href={href}
       class={`
     inline-flex
@@ -29,12 +38,14 @@ const variants = {
     duration-300
     hover:scale-105
     ${variants[variant]}
+    ${className ?? ""}
   `}
     >
       <slot />
     </a>
   ) : (
     <button
+      {...attrs}
       type={type}
       class={`
     inline-flex
@@ -51,6 +62,7 @@ const variants = {
     hover:text-black
     hover:border-0
     ${variants[variant]}
+    ${className ?? ""}
   `}
     >
       <slot />
