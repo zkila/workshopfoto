@@ -1,20 +1,23 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-
-import tailwindcss from '@tailwindcss/vite';
-
+import { defineConfig } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
 import mdx from "@astrojs/mdx";
-
 import react from "@astrojs/react";
+import vercel from "@astrojs/vercel";
 
-
-// https://astro.build/config
 export default defineConfig({
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
   },
 
-  integrations: [react(),mdx()],
+  integrations: [
+    react(),
+    mdx(),
+  ],
+
+  adapter: vercel(),
+
+  output: "server",
 });
 
 export const colors = {
@@ -22,5 +25,5 @@ export const colors = {
   surface: "#181818",
   text: "#FFFFFF",
   textMuted: "#A0A0A0",
-  accent: "#D4AF37"
+  accent: "#D4AF37",
 };
