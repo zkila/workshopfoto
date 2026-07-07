@@ -23,6 +23,9 @@ const { Content } = await render(workshop);
 ---
 
 <head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="/cam.ico" />
+  <meta name="viewport" content="width=device-width" />
   <script
     src="https://challenges.cloudflare.com/turnstile/v0/api.js"
     async
@@ -66,7 +69,11 @@ const { Content } = await render(workshop);
             class="odd:bg-gray-900 even:bg-neutral-secondary-soft border-b border-gray-700"
           >
             <td class="px-3 py-2"><strong>Price</strong></td>
-            <td>: ${workshop.data.price}</td>
+            <td
+              >: ${workshop.data.priceEarly} (Early Bird) / ${
+                workshop.data.priceStandard
+              } (Standard)</td
+            >
           </tr>
           <tr
             class="odd:bg-gray-900 even:bg-neutral-secondary-soft border-b border-gray-700"
