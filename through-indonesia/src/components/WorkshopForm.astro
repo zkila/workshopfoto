@@ -145,6 +145,8 @@ const { workshopSlug, workshopTitle } = Astro.props;
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
 
+      // console.log(data);
+
       const submitButton = document.getElementById("submit-button");
 
       if (!(submitButton instanceof HTMLButtonElement)) {
