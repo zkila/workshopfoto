@@ -22,6 +22,13 @@ if (!workshop) {
 const { Content } = await render(workshop);
 ---
 
+<head>
+  <script
+    src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+    async
+    defer></script>
+</head>
+
 <MainLayout title={workshop.data.title}>
   <Container>
     <div class="p-4 flex flex-col items-center justify-center">
@@ -104,18 +111,6 @@ const { Content } = await render(workshop);
     <div class="workshop-content"><Content /></div>
     <hr />
     <div class="py-8 items-center flex-col mx-auto flex gap-4 justify-center">
-      <!-- {
-        workshop.data.registrationLink && (
-          <Button
-            href={workshop.data.registrationLink}
-            target="_blank"
-            variant="primary"
-          >
-            Register Now
-          </Button>
-        )
-      } -->
-
       <WorkshopForm
         workshopSlug={workshop.id}
         workshopTitle={workshop.data.title}

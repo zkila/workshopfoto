@@ -8,6 +8,49 @@ export async function POST({ request }: { request: Request }) {
 
     const fullName = body.fullName?.trim();
     const email = body.email?.trim();
+
+    const formData = await request.formData();
+
+    const token = formData.get("cf-turnstile-response");
+
+    if (!token) {
+      return new Response(
+        JSON.stringify({
+          error: "Turnstile token missing",
+        }),
+        { status: 400 }
+      );
+    }
+
+    const ip =
+  request.headers.get("x-forwarded-for")?.split(",")[0].trim() ?? "";
+
+    const verify = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+        secret: import.meta.env.TURNSTILE_SECRET_KEY,
+        response: token.toString(),
+        remoteip: ip,
+      }),
+      }
+    );
+
+    const result = await verify.json();
+
+    if (!result.success) {
+      return new Response(
+        JSON.stringify({
+          error: "Turnstile verification failed",
+        }),
+        { status: 403 }
+      );
+    }
+
     if (!fullName) {
     return Response.json(     
         { error: "Full name is required." },     

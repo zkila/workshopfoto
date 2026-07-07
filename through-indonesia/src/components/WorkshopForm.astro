@@ -69,6 +69,12 @@ const { workshopSlug, workshopTitle } = Astro.props;
     ></textarea>
   </label>
   <div class="border-t border-accent/20 my-1"></div>
+  <div
+    class="cf-turnstile"
+    data-sitekey={import.meta.env.TURNSTILE_SITE_KEY}
+    data-callback="enableSubmit"
+  >
+  </div>
   <Button id="submit-button" type="submit" variant="secondary">Register</Button>
   <p
     id="form-status"
@@ -77,7 +83,11 @@ const { workshopSlug, workshopTitle } = Astro.props;
   >
   </p>
 </form>
-
+<script is:inline>
+  window.enableSubmit = function () {
+    document.getElementById("submit-button").disabled = false;
+  };
+</script>
 <script>
   (() => {
     console.log("script loaded");
