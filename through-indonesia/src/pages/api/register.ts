@@ -9,9 +9,7 @@ export async function POST({ request }: { request: Request }) {
     const fullName = body.fullName?.trim();
     const email = body.email?.trim();
 
-    const formData = await request.formData();
-
-    const token = formData.get("cf-turnstile-response");
+    const token = body["cf-turnstile-response"];
 
     if (!token) {
       return new Response(
