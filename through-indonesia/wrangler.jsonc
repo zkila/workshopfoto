@@ -1,0 +1,10 @@
+{
+  "name": "workshopfoto",
+  "main": "dist/server/entry.mjs",
+  "compatibility_date": "2026-07-08",
+
+  "assets": {
+    "directory": "dist/client",
+    "binding": "ASSETS"
+  }
+}
