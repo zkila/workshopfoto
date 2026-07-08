@@ -10,12 +10,6 @@ const workshopDetails = await getAllWorkshops();
 workshops.sort(
   (a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime(),
 );
-
-console.log("PUBLIC_SUPABASE_URL:", import.meta.env.PUBLIC_SUPABASE_URL);
-console.log(
-  "SUPABASE_SECRET_KEY exists:",
-  !!import.meta.env.SUPABASE_SECRET_KEY,
-);
 ---
 
 <MainLayout
