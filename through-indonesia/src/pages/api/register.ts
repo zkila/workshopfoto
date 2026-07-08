@@ -2,6 +2,8 @@ export const prerender = false;
 
 import { supabaseServer } from "../../lib/supabase-server";
 import { resend } from "../../lib/resend";
+import { getWorkshop } from "../../lib/workshops";
+import { countConfirmedRegistrations } from "../../lib/registrations";
 
 export async function POST({ request }: { request: Request }) {
   try {
@@ -10,7 +12,29 @@ export async function POST({ request }: { request: Request }) {
     const fullName = body.fullName?.trim();
     const email = body.email?.trim();
     const token = body["cf-turnstile-response"];
+
+    const workshop = await getWorkshop(body.workshopSlug);
+
+    const seatLimit = workshop.max_seats;
+
+    let statusRegistrant: string;
+
+    const confirmed = await countConfirmedRegistrations(body.workshopSlug);
+
+    if (!workshop.registration_open) {
+      return new Response(
+        JSON.stringify({
+          error: "Registrations are closed."
+        }),
+        { status: 403 }
+      );
+    }
     
+    if (confirmed >= seatLimit) {
+      statusRegistrant = "Waitlist";
+    } else {
+      statusRegistrant = "Confirmed";
+    }
 
     if (!token) {
       return Response.json(
@@ -78,31 +102,53 @@ export async function POST({ request }: { request: Request }) {
       .from("registrations")
       .insert({
         workshop_slug: body.workshopSlug,
-        workshop_title: body.workshopTitle,
         full_name: fullName,
-        email,
+        email: email,
         phone: body.phone,
         country: body.country,
         notes: body.notes,
+        status: statusRegistrant
       });
 
+    // if (statusRegistrant === "Confirmed") {
+    //   await resend.emails.send({
+    //     from: "Photography Workshops <onboarding@resend.dev>",
+    //     // to: email,
+    //     to:"arkana2003@gmail.com",
+    //     subject: "Workshop Registration- Confirmed",
+    //     html: `
+    //       <h2>Registration received!</h2>
 
+    //       <p>Hi ${fullName},</p>
 
-    await resend.emails.send({
-      from: "Photography Workshops <onboarding@resend.dev>",
-      // to: email,
-      to:"arkana2003@gmail.com",
-      subject: "Workshop Registration",
-      html: `
-        <h2>Registration received!</h2>
+    //       <p>Thank you for registering for the ${body.workshopTitle} workshop.</p>
 
-        <p>Hi ${fullName},</p>
+    //       <p>This is supposed to go to ${email}</p>
 
-        <p>Thank you for registering.</p>
+    //       <p>We'll contact you shortly.</p>
+    //     `,
+    //   });
+    // } else if (statusRegistrant === "Waitlist") {
+    //   await resend.emails.send({
+    //     from: "Photography Workshops <onboarding@resend.dev>",
+    //     // to: email,
+    //     to:"arkana2003@gmail.com",
+    //     subject: "Workshop Registration - Waitlist",
+    //     html: `
+    //       <h2>You've been added to the waitlist!</h2>
 
-        <p>We'll contact you shortly.</p>
-      `,
-    });
+    //       <p>Hi ${fullName},</p>
+
+    //       <p>Thank you for registering for the ${body.workshopTitle} workshop.</p>
+
+    //       <p>This is supposed to go to ${email}</p>
+
+    //       <p>We'll contact you as soon as a spot opens up.</p>
+    //     `,
+    //   });      
+    // }
+
+    
 
     if (error) {
       console.error("Supabase error:", error);

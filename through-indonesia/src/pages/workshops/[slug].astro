@@ -5,6 +5,13 @@ import Container from "../../components/ui/Container.astro";
 import WorkshopForm from "../../components/WorkshopForm.astro";
 import { Image } from "astro:assets";
 
+import { getWorkshop } from "../../lib/workshops";
+
+import {
+  countConfirmedRegistrations,
+  countWaitlist,
+} from "../../lib/registrations";
+
 const { slug } = Astro.params;
 
 if (!slug) {
@@ -13,11 +20,18 @@ if (!slug) {
 
 const workshop = await getEntry("workshops", slug);
 
+const workshopDetails = await getWorkshop(slug);
+
 if (!workshop) {
   return new Response("Workshop not found", {
     status: 404,
   });
 }
+
+const confirmedRegistrations = await countConfirmedRegistrations(
+  workshop.data.slug,
+);
+const waitlistRegistrations = await countWaitlist(workshop.data.slug);
 
 const { Content } = await render(workshop);
 ---
@@ -81,6 +95,18 @@ const { Content } = await render(workshop);
             <td class="px-3 py-2"><strong>Seats</strong></td>
             <td>: {workshop.data.seats}</td>
           </tr>
+          <tr
+            class="odd:bg-gray-900 even:bg-neutral-secondary-soft border-b border-gray-700"
+          >
+            <td class="px-3 py-2"><strong>Registration Open</strong></td>
+            <td>: {workshopDetails.registration_open ? "Yes" : "No"}</td>
+          </tr>
+          <tr
+            class="odd:bg-gray-900 even:bg-neutral-secondary-soft border-b border-gray-700"
+          >
+            <td class="px-3 py-2"><strong>Waitlist</strong></td>
+            <td>: {waitlistRegistrations}</td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -116,12 +142,35 @@ const { Content } = await render(workshop);
 
     <hr class="border-gray-500" />
     <div class="workshop-content"><Content /></div>
-    <hr />
-    <div class="py-8 items-center flex-col mx-auto flex gap-4 justify-center">
-      <WorkshopForm
-        workshopSlug={workshop.id}
-        workshopTitle={workshop.data.title}
-      />
+    <hr class="border-gray-500 mt-8 mb-8" />
+    <div class="flex justify-between items-center w-full md:w-1/2 mx-auto">
+      <div class="font-bold text-2xl">
+        Seats Available: {
+          workshop.data.seats - confirmedRegistrations > 0
+            ? workshop.data.seats - confirmedRegistrations
+            : 0
+        }
+      </div>
+      <div class="font-bold text-2xl">Waitlist: {waitlistRegistrations}</div>
+    </div>
+    <hr class="border-gray-500 mt-8" />
+    <div class="py-8 flex flex-col items-center mx-auto gap-4 justify-center">
+      {
+        workshopDetails.registration_open ? (
+          <WorkshopForm
+            workshopSlug={workshop.id}
+            workshopTitle={workshop.data.title}
+            availableSeats={workshop.data.seats - confirmedRegistrations}
+          />
+        ) : (
+          <div class="rounded-lg border border-zinc-700 bg-zinc-900 p-6 text-center">
+            <h3 class="text-lg font-semibold">Registration Closed</h3>
+            <p class="text-zinc-400 mt-2">
+              Registration for this workshop is not currently open.
+            </p>
+          </div>
+        )
+      }
     </div>
   </Container>
 </MainLayout>

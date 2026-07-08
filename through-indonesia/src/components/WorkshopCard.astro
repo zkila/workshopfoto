@@ -1,11 +1,19 @@
 ---
-const { workshop } = Astro.props;
+const { workshop, workshopDetails } = Astro.props;
 import { Image } from "astro:assets";
+import {
+  countConfirmedRegistrations,
+  countWaitlist,
+} from "../lib/registrations";
+const confirmedRegistrations = await countConfirmedRegistrations(
+  workshop.data.slug,
+);
+const waitlistRegistrations = await countWaitlist(workshop.data.slug);
 ---
 
 <a
-  href={`/workshops/${workshop.id}`}
-  class="group block overflow-hidden backdrop-sepia rounded-md"
+  href={`/workshops/${workshop.data.slug}`}
+  class="group flex flex-col h-full overflow-hidden backdrop-sepia rounded-md"
 >
   <Image
     src={workshop.data.thumbnail}
@@ -14,11 +22,49 @@ import { Image } from "astro:assets";
   />
 
   <div class="p-4">
-    <h2 class="text-3xl mb-2">{workshop.data.title}</h2>
-    <p class="text-gray-300 text-1xl">Guided by {workshop.data.instructor}</p>
+    <h2 class="text-3xl mb-2 line-clamp-2 min-h-20">
+      {workshop.data.title}
+    </h2>
+    <div class="flex justify-between items-center">
+      <p class="text-gray-300 text-1xl">Guided by {workshop.data.instructor}</p>
+      <div class="mt-2 text-sm">
+        {workshop.data.date}
+      </div>
+    </div>
 
-    <div class="mt-2 text-sm">
-      {workshop.data.date}
+    <div class="mt-auto">
+      <hr class="my-2 border-gray-700" />
+
+      <div class="flex justify-between items-center">
+        <div>
+          {
+            workshopDetails.max_seats - confirmedRegistrations > 0 && (
+              <p class="text-gray-300 text-sm">
+                Seats Available:{" "}
+                {workshopDetails.max_seats - confirmedRegistrations}
+              </p>
+            )
+          }
+
+          {
+            waitlistRegistrations > 0 && (
+              <p class="text-gray-300 text-sm">
+                Waitlist: {waitlistRegistrations}
+              </p>
+            )
+          }
+        </div>
+
+        <div class="text-sm text-right">
+          {
+            workshopDetails?.registration_open ? (
+              <span class="text-green-500">Registration Open</span>
+            ) : (
+              <span class="text-red-500">Registration Closed</span>
+            )
+          }
+        </div>
+      </div>
     </div>
   </div>
 </a>

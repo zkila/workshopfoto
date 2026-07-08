@@ -2,11 +2,12 @@
 interface Props {
   workshopSlug: string;
   workshopTitle: string;
+  availableSeats: number;
 }
 
 import Button from "../components/ui/Button.astro";
 
-const { workshopSlug, workshopTitle } = Astro.props;
+const { workshopSlug, workshopTitle, availableSeats } = Astro.props;
 ---
 
 <form
@@ -88,11 +89,19 @@ const { workshopSlug, workshopTitle } = Astro.props;
     document.getElementById("submit-button").disabled = false;
   };
 </script>
-<script>
+<script define:vars={{ availableSeats }}>
   (() => {
     console.log("script loaded");
 
     const form = document.getElementById("registration-form");
+
+    const submitButton = document.getElementById("submit-button");
+
+    if (availableSeats <= 0) {
+      submitButton.textContent = "Join waitlist";
+    } else {
+      submitButton.textContent = "Register";
+    }
 
     if (!(form instanceof HTMLFormElement)) {
       console.error("Form element not found.");
@@ -108,7 +117,7 @@ const { workshopSlug, workshopTitle } = Astro.props;
 
     const statusElement = status;
 
-    function showStatus(message: string | null, type: string) {
+    function showStatus(message, type) {
       statusElement.textContent = message;
 
       statusElement.classList.remove(
@@ -172,10 +181,17 @@ const { workshopSlug, workshopTitle } = Astro.props;
         return;
       }
 
-      showStatus(
-        "Registration submitted! We'll contact you shortly.",
-        "success",
-      );
+      if (availableSeats <= 0) {
+        showStatus(
+          "You've been added to the waitlist! We'll contact you if a spot opens up.",
+          "success",
+        );
+      } else {
+        showStatus(
+          "Registration submitted! We'll contact you shortly.",
+          "success",
+        );
+      }
 
       submitButton.disabled = false;
       submitButton.textContent = "Register";

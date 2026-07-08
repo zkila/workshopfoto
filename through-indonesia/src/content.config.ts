@@ -7,6 +7,7 @@ import { z } from 'astro/zod';
 const workshops = defineCollection({
     loader: glob({base:'./src/content/workshops', pattern: '**/*.{md,mdx}'}),
     schema: ({ image }) => z.object({
+    slug: z.string(),
     title: z.string(),
     description: z.string(),
     date: z.string(),

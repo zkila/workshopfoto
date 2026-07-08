@@ -2,8 +2,10 @@
 import { getCollection } from "astro:content";
 import WorkshopCard from "../../components/WorkshopCard.astro";
 import MainLayout from "../../layout/MainLayout.astro";
+import { getAllWorkshops } from "../../lib/workshops";
 
 const workshops = await getCollection("workshops");
+const workshopDetails = await getAllWorkshops();
 
 workshops.sort(
   (a, b) => new Date(a.data.date).getTime() - new Date(b.data.date).getTime(),
@@ -19,8 +21,19 @@ workshops.sort(
   </div>
 
   <div class="p-4">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {workshops.map((workshop) => <WorkshopCard workshop={workshop} />)}
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 items-stretch"
+    >
+      {
+        workshops.map((workshop) => (
+          <WorkshopCard
+            workshop={workshop}
+            workshopDetails={workshopDetails?.find(
+              (w) => w.slug === workshop.data.slug,
+            )}
+          />
+        ))
+      }
     </div>
   </div>
 </MainLayout>
