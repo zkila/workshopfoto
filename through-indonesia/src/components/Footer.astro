@@ -17,7 +17,7 @@ import Container from "./ui/Container.astro";
       <p>© 2026 Through Indonesia</p>
 
       <div class="flex
-        gap-6">
+        gap-6 items-center">
         <a href="https://www.instagram.com/ekosumartopo/" target="_blank">
           Instagram
         </a>
@@ -25,7 +25,79 @@ import Container from "./ui/Container.astro";
         <a href="https://www.facebook.com/" target="_blank"> Facebook </a>
 
         <a href="mailto:info@throughindonesia.com"> Email </a>
+
+        <button
+          id="theme-toggle"
+          type="button"
+          class="relative inline-flex h-8 w-16 items-center rounded-full bg-gray-300 transition-colors duration-300 dark:bg-neutral-700"
+          aria-label="Toggle dark mode"
+        >
+          <span
+            id="toggle-thumb"
+            class="absolute left-1 flex h-6 w-6 items-center justify-center rounded-full bg-white shadow transition-transform duration-300 dark:translate-x-8"
+          >
+            <!-- Sun -->
+            <svg
+              id="sun-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4 text-yellow-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <circle cx="12" cy="12" r="5" stroke-width="2"></circle>
+              <path
+                stroke-width="2"
+                stroke-linecap="round"
+                d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42m12.72-12.72l1.42-1.42"
+              ></path>
+            </svg>
+
+            <!-- Moon -->
+            <svg
+              id="moon-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              class="hidden h-4 w-4 text-slate-700"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M21.64 13a9 9 0 01-10.63-10.63A9 9 0 1021.64 13z"></path>
+            </svg>
+          </span>
+        </button>
       </div>
     </div>
   </Container>
 </footer>
+
+<script>
+  const button = document.querySelector("#theme-toggle");
+  const sun = document.querySelector("#sun-icon");
+  const moon = document.querySelector("#moon-icon");
+
+  if (!(button instanceof HTMLButtonElement)) {
+    throw new Error("Theme toggle not found");
+  }
+
+  function updateThemeUI() {
+    const dark = document.documentElement.classList.contains("dark");
+
+    sun?.classList.toggle("hidden", dark);
+    moon?.classList.toggle("hidden", !dark);
+  }
+
+  updateThemeUI();
+
+  button.addEventListener("click", () => {
+    const html = document.documentElement;
+
+    html.classList.toggle("dark");
+
+    localStorage.setItem(
+      "theme",
+      html.classList.contains("dark") ? "dark" : "light",
+    );
+
+    updateThemeUI();
+  });
+</script>

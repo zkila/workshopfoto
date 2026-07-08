@@ -2,18 +2,26 @@
 import Container from "./ui/Container.astro";
 ---
 
-<header class="sticky
+<header
+  class="sticky
   top-0
   z-50
-  bg-background/90
-  backdrop-blur">
+  bg-white/90 text-black dark:bg-background/90 dark:text-white transition-colors duration-300
+  backdrop-blur"
+>
   <Container>
     <nav class="flex items-center justify-between py-6">
-      <a href="/" class="flex items-center">
+      <a href="/">
         <img
           src="/through-indonesia-logo.svg"
           alt="Through Indonesia"
-          class="h-12 w-auto"
+          class="h-12 w-auto dark:hidden"
+        />
+
+        <img
+          src="/through-indonesia-logo-dark.svg"
+          alt="Through Indonesia"
+          class="hidden h-12 w-auto dark:block"
         />
       </a>
 
@@ -39,7 +47,8 @@ import Container from "./ui/Container.astro";
       top-full
       right-0
       w-35
-      bg-background/90
+      dark:bg-background/90
+      bg-white/90
       backdrop-blur
       flex-col
       gap-8

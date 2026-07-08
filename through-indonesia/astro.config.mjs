@@ -3,7 +3,7 @@ import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
-import vercel from "@astrojs/vercel";
+import cloudflare from "@astrojs/cloudflare";
 
 export default defineConfig({
   vite: {
@@ -15,10 +15,11 @@ export default defineConfig({
     mdx(),
   ],
 
-  adapter: vercel(),
+  adapter: cloudflare(),
 
   output: "server",
 });
+
 
 export const colors = {
   background: "#0F0F0F",
