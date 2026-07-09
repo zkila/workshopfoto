@@ -9,7 +9,7 @@ const heroImage =
   "https://images.throughindonesia.com/assets/general/hero.jpeg";
 ---
 
-<MainLayout title="Through Indonesia">
+<MainLayout title="Through Indonesia" compactFooter>
   <section
     class="min-h-screen
   flex
@@ -27,13 +27,15 @@ const heroImage =
           Landscape Photography Workshops & Adventures
         </h1>
 
-        <p class="text-tertiary
-        text-xl
-        mb-10">
-          Capturing nature's most extraordinary moments.
-        </p>
+        <div
+          class="rounded-2xl bg-linear-to-r from-background from-50% to-blue-500/0 p-3 mb-10"
+        >
+          <p class="text-secondary text-xl">
+            Capturing nature's most extraordinary moments.
+          </p>
+        </div>
 
-        <Button href="/workshops"> Explore Journeys </Button>
+        <Button href="/workshops"> Explore our Journeys </Button>
       </div>
     </Container>
   </section>

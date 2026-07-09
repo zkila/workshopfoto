@@ -7,7 +7,12 @@ import "../styles/global.css";
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 
-const { title } = Astro.props;
+const { title, compactFooter } = Astro.props;
+
+interface Props {
+  compactFooter?: boolean;
+  title: string;
+}
 ---
 
 <!doctype html>
@@ -29,7 +34,7 @@ const { title } = Astro.props;
       <slot />
     </main>
 
-    <Footer />
+    <Footer compact={compactFooter} />
   </body>
 </html>
 

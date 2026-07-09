@@ -27,51 +27,75 @@ const image = responsiveImage(workshop.data.thumbnail, [400, 600, 900, 1200]);
     loading="lazy"
     decoding="async"
   />
-
-  <div class="p-4">
-    <h2 class="text-3xl mb-2 line-clamp-2 min-h-20">
-      {workshop.data.title}
-    </h2>
-    <div class="flex justify-between items-center">
-      <p class="text-gray-300 text-1xl">Guided by {workshop.data.instructor}</p>
-      <div class="mt-2 text-sm">
-        {workshop.data.date}
-      </div>
-    </div>
-
-    <div class="mt-auto">
-      <hr class="my-2 border-gray-700" />
-
-      <div class="flex justify-between items-center">
-        <div>
-          {
-            workshopDetails.max_seats - confirmedRegistrations > 0 && (
-              <p class="text-gray-300 text-sm">
-                Seats Available:{" "}
-                {workshopDetails.max_seats - confirmedRegistrations}
-              </p>
-            )
-          }
-
-          {
-            waitlistRegistrations > 0 && (
-              <p class="text-gray-300 text-sm">
-                Waitlist: {waitlistRegistrations}
-              </p>
-            )
-          }
+  {
+    workshopDetails.collab ? (
+      <div class="p-4">
+        <h2 class="text-3xl mb-2 line-clamp-2 min-h-20">
+          {workshop.data.title}
+        </h2>
+        <div class="flex justify-between items-center">
+          <p class="text-gray-300 text-1xl">
+            Guided by {workshop.data.instructor}
+          </p>
         </div>
 
-        <div class="text-sm text-right">
-          {
-            workshopDetails?.registration_open ? (
-              <span class="text-green-500">Registration Open</span>
-            ) : (
-              <span class="text-red-500">Registration Closed</span>
-            )
-          }
+        <div class="mt-auto">
+          <hr class="my-2 border-gray-700" />
+
+          <div class="flex justify-between items-center">
+            <div class="text-sm">{workshop.data.date}</div>
+
+            <div class="text-sm text-right">
+              {workshopDetails?.registration_open ? (
+                <span class="text-green-500">Registration Open</span>
+              ) : (
+                <span class="text-red-500">Registration Closed</span>
+              )}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+    ) : (
+      <div class="p-4">
+        <h2 class="text-3xl mb-2 line-clamp-2 min-h-20">
+          {workshop.data.title}
+        </h2>
+        <div class="flex justify-between items-center">
+          <p class="text-gray-300 text-1xl">
+            Guided by {workshop.data.instructor}
+          </p>
+          <div class="mt-2 text-sm">{workshop.data.date}</div>
+        </div>
+
+        <div class="mt-auto">
+          <hr class="my-2 border-gray-700" />
+
+          <div class="flex justify-between items-center">
+            <div>
+              {workshopDetails.max_seats - confirmedRegistrations > 0 && (
+                <p class="text-gray-300 text-sm">
+                  Seats Available:{" "}
+                  {workshopDetails.max_seats - confirmedRegistrations}
+                </p>
+              )}
+
+              {waitlistRegistrations > 0 && (
+                <p class="text-gray-300 text-sm">
+                  Waitlist: {waitlistRegistrations}
+                </p>
+              )}
+            </div>
+
+            <div class="text-sm text-right">
+              {workshopDetails?.registration_open ? (
+                <span class="text-green-500">Registration Open</span>
+              ) : (
+                <span class="text-red-500">Registration Closed</span>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
 </a>
