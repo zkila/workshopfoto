@@ -8,8 +8,10 @@ const confirmedRegistrations = await countConfirmedRegistrations(
   workshop.data.slug,
 );
 const waitlistRegistrations = await countWaitlist(workshop.data.slug);
-const thumbnail = `/cdn-cgi/image/width=600,quality=80,format=auto/${workshop.data.thumbnail}`;
-console.log(thumbnail);
+
+import { responsiveImage } from "../lib/transformedImage";
+
+const image = responsiveImage(workshop.data.thumbnail, [400, 600, 900, 1200]);
 ---
 
 <a
@@ -17,7 +19,9 @@ console.log(thumbnail);
   class="group flex flex-col h-full overflow-hidden backdrop-sepia rounded-md"
 >
   <img
-    src={thumbnail}
+    src={image.src}
+    srcset={image.srcset}
+    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
     alt={workshop.data.title}
     class="aspect-video w-full object-cover"
     loading="lazy"

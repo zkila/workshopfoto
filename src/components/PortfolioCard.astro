@@ -8,12 +8,17 @@ interface Props {
 }
 
 const { image, title } = Astro.props;
+
+import { responsiveImage } from "../lib/transformedImage";
+
+const imageOptimized = responsiveImage(image.url, [400, 600, 900, 1200]);
 ---
 
 <div class="overflow-hidden group">
   <div class="w-full overflow-hidden aspect-square">
     <img
-      src={image.url}
+      src={imageOptimized.src}
+      srcset={imageOptimized.srcset}
       alt={title}
       loading="lazy"
       decoding="async"

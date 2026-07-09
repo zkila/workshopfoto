@@ -9,10 +9,16 @@ interface GalleryProps {
   images: GalleryImage[];
 }
 
+import { responsiveImage } from "../lib/transformedImage";
+
 export default function Gallery({ images }: GalleryProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const selected = selectedIndex !== null ? images[selectedIndex] : null;
+
+  const selectedOptimized = selected
+    ? responsiveImage(selected.url, [800, 1200, 1600, 2000])
+    : null;
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -43,30 +49,37 @@ export default function Gallery({ images }: GalleryProps) {
   return (
     <>
       <div className="grid grid-cols-3 gap-1">
-        {images.map((img, index) => (
-          <button
-            key={img.filename}
-            onClick={() => setSelectedIndex(index)}
-            className="overflow-hidden"
-          >
-            <img
-              src={img.url}
-              alt={img.filename}
-              decoding="async"
-              className="
-                w-full
-                aspect-square
-                object-cover
-                cursor-pointer
-                hover:scale-105
-                transition-transform
-              "
-            />
-          </button>
-        ))}
+        {images.map((img, index) => {
+          const optimized = responsiveImage(img.url, [400, 600, 900]);
+
+          return (
+            <button
+              key={img.filename}
+              onClick={() => setSelectedIndex(index)}
+              className="overflow-hidden"
+            >
+              <img
+                src={optimized.src}
+                srcSet={optimized.srcset}
+                sizes="(max-width: 768px) 50vw, 33vw"
+                alt={img.filename}
+                loading="lazy"
+                decoding="async"
+                className="
+          w-full
+          aspect-square
+          object-cover
+          cursor-pointer
+          hover:scale-105
+          transition-transform
+        "
+              />
+            </button>
+          );
+        })}
       </div>
 
-      {selected && (
+      {selected && selectedOptimized && (
         <div
           className="
             fixed
@@ -93,8 +106,11 @@ export default function Gallery({ images }: GalleryProps) {
           </button>
 
           <img
-            src={selected.url}
+            src={selectedOptimized.src}
+            srcSet={selectedOptimized.srcset}
+            sizes="100vw"
             alt={selected.filename}
+            decoding="async"
             className="
               max-w-[90vw]
               max-h-[90vh]
