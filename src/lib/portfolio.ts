@@ -1,7 +1,4 @@
-
-
-import type { ImageMetadata } from "astro";
-
+const R2_BASE = import.meta.env.PUBLIC_R2_URL;
 
 export interface GalleryImage {
   url: string;
@@ -15,68 +12,50 @@ export interface Portfolio {
   images: GalleryImage[];
 }
 
-
-function loadLocalImages(
-  images: Record<string, { default: ImageMetadata }>
+export function createGalleryImages(
+  folder: string,
+  files: string[]
 ): GalleryImage[] {
-  return Object.entries(images)
-    .sort(([a], [b]) =>
-      a.localeCompare(b, undefined, { numeric: true })
-    )
-    .map(([path, image]) => ({
-      url: image.default.src,
-      filename:
-        path
-          .split("/")
-          .pop()
-          ?.replace(/\.[^/.]+$/, "") ??
-        "Untitled",
-    }));
+  return files.map((file) => ({
+    url: `${R2_BASE}/assets/portfolio/${folder}/${file}`,
+    filename: file.replace(/\.[^/.]+$/, ""),
+  }));
 }
-
 
 const portfolios: Record<string, Omit<Portfolio, "slug">> = {
 
-  antarctica: {
-    title: "Antarctica",
+  bali: {
+    title: "Bali",
 
-    images: loadLocalImages(
-      import.meta.glob(
-        "../assets/portfolio/antarcticapage/*.{png,jpg,jpeg,webp}",
-        {
-          eager: true,
-        }
-      )
-    ),
+    images: createGalleryImages("bali", [
+  "bali1.jpg",
+  "bali2.jpg",
+  "bali3.jpg",
+  "bali4.jpg",
+  "bali5.jpg",
+])
   },
-
-
-  pakistan: {
-    title: "Pakistan",
-
-    images: loadLocalImages(
-      import.meta.glob(
-        "../assets/portfolio/pakistanpage/*.{png,jpg,jpeg,webp}",
-        {
-          eager: true,
-        }
-      )
-    ),
+  java:{
+    title: "Java",
+    images: createGalleryImages("java", [
+      "ijen1.jpg",
+      "ijen2.jpg",
+      "kuda1.jpg",
+      "kuda2.jpg",
+      "pantai1.jpg",
+      "semeru1.jpg",
+      "semeru2.jpg",
+      "semeru3.jpg",
+      "trawas1.jpg",])
   },
-
-
-  indonesia: {
-    title: "Indonesia",
-
-    images: loadLocalImages(
-      import.meta.glob(
-        "../assets/portfolio/indonesiapage/*.{png,jpg,jpeg,webp}",
-        {
-          eager: true,
-        }
-      )
-    ),
-  },
+  borneo: {
+    title: "Borneo",
+    images: createGalleryImages("borneo", [
+      "simpanse1.jpg",
+      "orangutan1.jpg",
+      "orangutan2.jpg",
+      "orangutan3.jpg",
+      "buaya1.jpg",])}
 
 };
 

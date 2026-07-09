@@ -8,8 +8,7 @@ priceEarly: 8450
 priceStandard: 8950
 seats: 5
 featured: true
-thumbnail: "../../assets/workshop/living-cultures-indonesia/bali1.png"
-hires: "../../assets/workshop/living-cultures-indonesia/bali1.png"
+thumbnail: "https://images.throughindonesia.com/assets/portfolio/bali/bali2.jpg"
 included:
 - Professional Expedition Leader
 - Photography Mentoring
@@ -37,12 +36,7 @@ instructor: "Eko Sumartopo"
 ---
 
 import Gallery from "../../components/Gallery.tsx";
-
-import img1 from "../../assets/workshop/living-cultures-indonesia/bali1.png";
-import img2 from "../../assets/workshop/living-cultures-indonesia/bali2.png";
-import img3 from "../../assets/workshop/living-cultures-indonesia/bali3.png";
-import img4 from "../../assets/workshop/living-cultures-indonesia/bali4.png";
-import img5 from "../../assets/workshop/living-cultures-indonesia/bali5.png";
+import {createGalleryImages} from "../../lib/portfolio.ts";
 
 # Overview
 
@@ -56,13 +50,10 @@ This journey is not about collecting destinations. It is about meeting people, l
 
 <div class="p-8">
   <Gallery
-    images={[
-      { url: img1.src, filename: "bali1.png" },
-      { url: img2.src, filename: "bali2.png" },
-      { url: img3.src, filename: "bali3.png",},
-      { url: img4.src, filename: "bali4.png" },
-      { url: img5.src, filename: "bali5.png" }
-    ]}
+    images={createGalleryImages("bali", [
+      "bali3.jpg",
+      "bali6.jpg",
+      "bali7.jpg",])}
     client:visible
   />
 </div>

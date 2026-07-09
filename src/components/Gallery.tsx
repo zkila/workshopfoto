@@ -52,6 +52,7 @@ export default function Gallery({ images }: GalleryProps) {
             <img
               src={img.url}
               alt={img.filename}
+              decoding="async"
               className="
                 w-full
                 aspect-square

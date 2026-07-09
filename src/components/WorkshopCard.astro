@@ -1,6 +1,5 @@
 ---
 const { workshop, workshopDetails } = Astro.props;
-import { Image } from "astro:assets";
 import {
   countConfirmedRegistrations,
   countWaitlist,
@@ -15,7 +14,7 @@ const waitlistRegistrations = await countWaitlist(workshop.data.slug);
   href={`/workshops/${workshop.data.slug}`}
   class="group flex flex-col h-full overflow-hidden backdrop-sepia rounded-md"
 >
-  <Image
+  <img
     src={workshop.data.thumbnail}
     alt={workshop.data.title}
     class="aspect-video w-full object-cover"

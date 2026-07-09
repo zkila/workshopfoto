@@ -8,8 +8,7 @@ priceEarly: 8450
 priceStandard: 8950
 seats: 5
 featured: true
-thumbnail: "../../assets/workshop/bali-java-expedition/bromo1.png"
-hires: "../../assets/workshop/bali-java-expedition/bromo1.png"
+thumbnail: "https://images.throughindonesia.com/assets/portfolio/java/semeru1.jpg"
 included:
 - Professional Expedition Leader
 - Photography Mentoring
@@ -36,12 +35,7 @@ instructor: "Eko Sumartopo"
 ---
 
 import Gallery from "../../components/Gallery.tsx";
-
-import img1 from "../../assets/workshop/bali-java-expedition/bromo2.png";
-import img2 from "../../assets/workshop/bali-java-expedition/sriti1.png";
-import img3 from "../../assets/workshop/bali-java-expedition/tumpaksewu1.png";
-import img4 from "../../assets/workshop/bali-java-expedition/magelang1.png";
-import img5 from "../../assets/workshop/bali-java-expedition/kedungkayang1.png";
+import {createGalleryImages} from "../../lib/portfolio.ts";
 
 # Overview
 
@@ -51,13 +45,10 @@ Experience the extraordinary beauty of Indonesia through an immersive photograph
 
 <div class="p-8">
   <Gallery
-    images={[
-      { url: img1.src, filename: "bromo2.png" },
-      { url: img2.src, filename: "sriti1.png" },
-      { url: img3.src, filename: "tumpaksewu1.png",},
-      { url: img4.src, filename: "magelang1.png" },
-      { url: img5.src, filename: "kedungkayang1.png" }
-    ]}
+    images={createGalleryImages("java", [
+      "ijen1.jpg",
+      "kuda1.jpg",
+      "semeru1.jpg",])}
     client:visible
   />
 </div>
