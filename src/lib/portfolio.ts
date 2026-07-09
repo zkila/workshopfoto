@@ -1,5 +1,7 @@
 const R2_BASE = import.meta.env.PUBLIC_R2_URL;
 
+console.log(import.meta.env.PUBLIC_R2_URL);
+
 export interface GalleryImage {
   url: string;
   filename: string;
