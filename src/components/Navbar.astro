@@ -2,27 +2,38 @@
 import Container from "./ui/Container.astro";
 ---
 
-<header
+<!-- <header
   class="sticky
   top-0
   z-50
   bg-white/90 text-black dark:bg-background/90 dark:text-white transition-colors duration-300
   backdrop-blur"
->
+> -->
+<header class="sticky
+  top-0
+  z-50
+  backdrop-blur
+  bg-background/90">
   <Container>
     <nav class="flex items-center justify-between py-6">
       <a href="/">
-        <img
-          src="/through-indonesia-logo.svg"
+        <!-- <img
+          src="/through-indonesia-logo-01.svg"
           alt="Through Indonesia"
           class="h-12 w-auto dark:hidden"
-        />
+        /> -->
 
         <img
-          src="/through-indonesia-logo-dark.svg"
+          src="/through-indonesia-logo-01.svg"
+          alt="Through Indonesia"
+          class="h-12 w-auto"
+        />
+
+        <!-- <img
+          src="/through-indonesia-logo-dark-01.svg"
           alt="Through Indonesia"
           class="hidden h-12 w-auto dark:block"
-        />
+        /> -->
       </a>
 
       <div class="hidden md:flex ml-auto">
@@ -41,7 +52,7 @@ import Container from "./ui/Container.astro";
           ☰
         </button>
 
-        <div
+        <!-- <div
           id="mobile-menu"
           class="absolute
       top-full
@@ -49,6 +60,27 @@ import Container from "./ui/Container.astro";
       w-35
       dark:bg-background/90
       bg-white/90
+      backdrop-blur
+      flex-col
+      gap-8
+      p-4
+      rounded-lg
+      shadow-lg
+      opacity-0
+      scale-95
+      pointer-events-none
+      transition-all
+      duration-200
+      ease-out
+      text-right"
+        > -->
+        <div
+          id="mobile-menu"
+          class="absolute
+      top-full
+      right-0
+      w-35
+      bg-background/90
       backdrop-blur
       flex-col
       gap-8
