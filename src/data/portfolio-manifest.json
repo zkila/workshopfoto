@@ -3,7 +3,15 @@
     "width": 4032,
     "height": 3024
   },
+  "bali/bali1.webp": {
+    "width": 4032,
+    "height": 3024
+  },
   "bali/bali2.jpg": {
+    "width": 4032,
+    "height": 3024
+  },
+  "bali/bali2.webp": {
     "width": 4032,
     "height": 3024
   },
@@ -11,7 +19,15 @@
     "width": 4000,
     "height": 5994
   },
+  "bali/bali3.webp": {
+    "width": 4000,
+    "height": 5994
+  },
   "bali/bali4.jpg": {
+    "width": 7360,
+    "height": 4912
+  },
+  "bali/bali4.webp": {
     "width": 7360,
     "height": 4912
   },
@@ -19,7 +35,15 @@
     "width": 3282,
     "height": 5320
   },
+  "bali/bali5.webp": {
+    "width": 3282,
+    "height": 5320
+  },
   "bali/bali6.jpg": {
+    "width": 1448,
+    "height": 1086
+  },
+  "bali/bali6.webp": {
     "width": 1448,
     "height": 1086
   },
@@ -27,7 +51,15 @@
     "width": 3024,
     "height": 4032
   },
+  "bali/bali7.webp": {
+    "width": 3024,
+    "height": 4032
+  },
   "borneo/buaya1.jpg": {
+    "width": 886,
+    "height": 1200
+  },
+  "borneo/buaya1.webp": {
     "width": 886,
     "height": 1200
   },
@@ -35,7 +67,15 @@
     "width": 945,
     "height": 1200
   },
+  "borneo/orangutan1.webp": {
+    "width": 945,
+    "height": 1200
+  },
   "borneo/orangutan2.jpg": {
+    "width": 800,
+    "height": 1200
+  },
+  "borneo/orangutan2.webp": {
     "width": 800,
     "height": 1200
   },
@@ -43,7 +83,15 @@
     "width": 960,
     "height": 1200
   },
+  "borneo/orangutan3.webp": {
+    "width": 960,
+    "height": 1200
+  },
   "borneo/simpanse1.jpg": {
+    "width": 1200,
+    "height": 812
+  },
+  "borneo/simpanse1.webp": {
     "width": 1200,
     "height": 812
   },
@@ -51,7 +99,15 @@
     "width": 1024,
     "height": 681
   },
+  "buton/buton1.webp": {
+    "width": 1024,
+    "height": 681
+  },
   "buton/buton2.jpg": {
+    "width": 1064,
+    "height": 1600
+  },
+  "buton/buton2.webp": {
     "width": 1064,
     "height": 1600
   },
@@ -59,7 +115,15 @@
     "width": 1131,
     "height": 1600
   },
+  "buton/buton3.webp": {
+    "width": 1131,
+    "height": 1600
+  },
   "buton/buton4.jpg": {
+    "width": 1600,
+    "height": 1064
+  },
+  "buton/buton4.webp": {
     "width": 1600,
     "height": 1064
   },
@@ -67,7 +131,15 @@
     "width": 1600,
     "height": 1064
   },
+  "buton/buton5.webp": {
+    "width": 1600,
+    "height": 1064
+  },
   "buton/buton6.jpg": {
+    "width": 1600,
+    "height": 1064
+  },
+  "buton/buton6.webp": {
     "width": 1600,
     "height": 1064
   },
@@ -75,7 +147,15 @@
     "width": 1600,
     "height": 1064
   },
+  "buton/buton7.webp": {
+    "width": 1600,
+    "height": 1064
+  },
   "java/ijen1.jpg": {
+    "width": 1500,
+    "height": 872
+  },
+  "java/ijen1.webp": {
     "width": 1500,
     "height": 872
   },
@@ -83,7 +163,15 @@
     "width": 14720,
     "height": 9824
   },
+  "java/ijen2.webp": {
+    "width": 3680,
+    "height": 2456
+  },
   "java/kuda1.jpg": {
+    "width": 2853,
+    "height": 4182
+  },
+  "java/kuda1.webp": {
     "width": 2853,
     "height": 4182
   },
@@ -91,7 +179,15 @@
     "width": 2803,
     "height": 3648
   },
+  "java/kuda2.webp": {
+    "width": 2803,
+    "height": 3648
+  },
   "java/pantai1.jpg": {
+    "width": 1500,
+    "height": 1000
+  },
+  "java/pantai1.webp": {
     "width": 1500,
     "height": 1000
   },
@@ -99,7 +195,15 @@
     "width": 7984,
     "height": 5984
   },
+  "java/semeru1.webp": {
+    "width": 7984,
+    "height": 5984
+  },
   "java/semeru2.jpg": {
+    "width": 5000,
+    "height": 3333
+  },
+  "java/semeru2.webp": {
     "width": 5000,
     "height": 3333
   },
@@ -107,7 +211,15 @@
     "width": 5472,
     "height": 3648
   },
+  "java/semeru3.webp": {
+    "width": 5472,
+    "height": 3648
+  },
   "java/trawas1.jpg": {
+    "width": 2562,
+    "height": 3155
+  },
+  "java/trawas1.webp": {
     "width": 2562,
     "height": 3155
   },
@@ -167,7 +279,15 @@
     "width": 7986,
     "height": 5327
   },
+  "lombok/lombok1.webp": {
+    "width": 7986,
+    "height": 5327
+  },
   "lombok/lombok2.jpg": {
+    "width": 2419,
+    "height": 3024
+  },
+  "lombok/lombok2.webp": {
     "width": 2419,
     "height": 3024
   },
@@ -175,7 +295,15 @@
     "width": 4032,
     "height": 3024
   },
+  "lombok/lombok3.webp": {
+    "width": 4032,
+    "height": 3024
+  },
   "lombok/lombok4.jpg": {
+    "width": 3648,
+    "height": 5472
+  },
+  "lombok/lombok4.webp": {
     "width": 3648,
     "height": 5472
   },
@@ -183,7 +311,15 @@
     "width": 3648,
     "height": 5472
   },
+  "lombok/lombok5.webp": {
+    "width": 3648,
+    "height": 5472
+  },
   "lombok/lombok6.jpg": {
+    "width": 3648,
+    "height": 5472
+  },
+  "lombok/lombok6.webp": {
     "width": 3648,
     "height": 5472
   },
@@ -191,7 +327,15 @@
     "width": 4397,
     "height": 2931
   },
+  "lombok/lombok7.webp": {
+    "width": 4397,
+    "height": 2931
+  },
   "sumba/sumba1.jpg": {
+    "width": 4928,
+    "height": 3280
+  },
+  "sumba/sumba1.webp": {
     "width": 4928,
     "height": 3280
   },
@@ -199,11 +343,23 @@
     "width": 4928,
     "height": 3280
   },
+  "sumba/sumba2.webp": {
+    "width": 4928,
+    "height": 3280
+  },
   "sumba/sumba3.jpg": {
     "width": 736,
     "height": 414
   },
+  "sumba/sumba3.webp": {
+    "width": 736,
+    "height": 414
+  },
   "sumba/sumba4.jpg": {
+    "width": 3656,
+    "height": 2437
+  },
+  "sumba/sumba4.webp": {
     "width": 3656,
     "height": 2437
   }

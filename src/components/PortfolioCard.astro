@@ -11,7 +11,7 @@ const { image, title } = Astro.props;
 
 import { responsiveImage } from "../lib/transformedImage";
 
-const imageOptimized = responsiveImage(image.url, [400, 600, 900, 1200]);
+const imageOptimized = responsiveImage(image.url, [200, 300, 400, 500]);
 ---
 
 <div class="overflow-hidden group">
@@ -20,8 +20,9 @@ const imageOptimized = responsiveImage(image.url, [400, 600, 900, 1200]);
       src={imageOptimized.src}
       srcset={imageOptimized.srcset}
       alt={title}
-      loading="lazy"
-      decoding="async"
+      loading="eager"
+      decoding="auto"
+      fetchpriority="high"
       class="w-full
         h-full
         object-cover

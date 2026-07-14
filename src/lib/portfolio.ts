@@ -58,66 +58,66 @@ const portfolios: Record<string, Omit<Portfolio, "slug">> = {
     title: "Bali",
 
     images: createGalleryImages("bali", [
-  "bali1.jpg",
-  "bali2.jpg",
-  "bali3.jpg",
-  "bali4.jpg",
-  "bali5.jpg",
+  "bali1.webp",
+  "bali2.webp",
+  "bali3.webp",
+  "bali4.webp",
+  "bali5.webp",
 ])
   },
   java:{
     title: "Java",
     images: createGalleryImages("java", [
-      "ijen1.jpg",
-      "ijen2.jpg",
-      "kuda1.jpg",
-      "kuda2.jpg",
-      "pantai1.jpg",
-      "semeru1.jpg",
-      "semeru2.jpg",
-      "semeru3.jpg",
-      "trawas1.jpg",])
+      "ijen1.webp",
+      "ijen2.webp",
+      "kuda1.webp",
+      "kuda2.webp",
+      "pantai1.webp",
+      "semeru1.webp",
+      "semeru2.webp",
+      "semeru3.webp",
+      "trawas1.webp",])
   },
   borneo: {
     title: "Borneo",
     images: createGalleryImages("borneo", [
-      "simpanse1.jpg",
-      "orangutan1.jpg",
-      "orangutan2.jpg",
-      "orangutan3.jpg",
-      "buaya1.jpg",])
+      "simpanse1.webp",
+      "orangutan1.webp",
+      "orangutan2.webp",
+      "orangutan3.webp",
+      "buaya1.webp",])
     },
     buton: {
       title: "Buton",
       images: createGalleryImages("buton",[
-        "buton6.jpg",
-        "buton1.jpg",
-        "buton2.jpg",
-        "buton3.jpg",
-        "buton4.jpg",
-        "buton5.jpg",
-        "buton7.jpg"
+        "buton6.webp",
+        "buton1.webp",
+        "buton2.webp",
+        "buton3.webp",
+        "buton4.webp",
+        "buton5.webp",
+        "buton7.webp"
       ])
     },
     lombok:{
       title:"Lombok",
       images:createGalleryImages("lombok",[
-        "lombok1.jpg",
-        "lombok2.jpg",
-        "lombok3.jpg",
-        "lombok4.jpg",
-        "lombok5.jpg",
-        "lombok6.jpg",
-        "lombok7.jpg",
+        "lombok1.webp",
+        "lombok2.webp",
+        "lombok3.webp",
+        "lombok4.webp",
+        "lombok5.webp",
+        "lombok6.webp",
+        "lombok7.webp",
       ])
     },
     sumba:{
       title: "Sumba",
       images:createGalleryImages("sumba",[
-        "sumba1.jpg",
-        "sumba2.jpg",
-        "sumba3.jpg",
-        "sumba4.jpg",
+        "sumba1.webp",
+        "sumba2.webp",
+        "sumba3.webp",
+        "sumba4.webp",
       ])
     }
 
