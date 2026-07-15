@@ -43,9 +43,9 @@ const breadcrumbs = [
 ];
 ---
 
-<head>
+<head lang="en">
   <meta charset="UTF-8" />
-  <link rel="icon" href="/cam.ico" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg" />
   <meta name="viewport" content="width=device-width" />
   <script
     src="https://challenges.cloudflare.com/turnstile/v0/api.js"
@@ -137,26 +137,30 @@ const breadcrumbs = [
             <th class="px-3 py-2">Included</th>
             <th class="px-3 py-2">Not Included</th>
           </tr>
-          <tbody>
-            <tr>
-              <td class="px-3 py-2">
-                <ul class="list-disc list-inside">
-                  {workshop.data.included.map((item) => <li>{item}</li>)}
-                </ul>
-              </td>
-              <td class="px-3 py-2">
-                <ul class="list-disc list-inside">
-                  {workshop.data.notIncluded.map((item) => <li>{item}</li>)}
-                </ul>
-              </td>
-            </tr>
-          </tbody></thead
-        >
+        </thead>
+
+        <tbody>
+          <tr>
+            <td class="px-3 py-2">
+              <ul class="list-disc list-inside">
+                {workshop.data.included.map((item) => <li>{item}</li>)}
+              </ul>
+            </td>
+
+            <td class="px-3 py-2">
+              <ul class="list-disc list-inside">
+                {workshop.data.notIncluded.map((item) => <li>{item}</li>)}
+              </ul>
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
 
     <hr class="border-gray-500" />
-    <div class="workshop-content"><Content /></div>
+    <div class="workshop-content">
+      <Content />
+    </div>
     <hr class="border-gray-500 mt-8 mb-8" />
     <div class="flex justify-between items-center w-full md:w-1/2 mx-auto">
       <div class="font-bold text-2xl">
