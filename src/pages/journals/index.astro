@@ -19,7 +19,7 @@ const breadcrumbs = [{ label: "Home", href: "/" }, { label: "Journals" }];
         journals.map((journals) => (
           <a
             href={`/journals/${journals.data.slug}`}
-            class="group flex flex-col h-full overflow-hidden bg-linear-120 from-secondary to-background rounded-md"
+            class="group flex flex-col h-full overflow-hidden bg-linear-120 from-accent/50 to-background rounded-md"
           >
             <div class="justify-between flex items-center">
               <h1 class="p-6 italic text-2xl">{journals.data.title}</h1>

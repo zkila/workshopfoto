@@ -1,25 +1,47 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import MainLayout from "../../layout/MainLayout.astro";
+import Container from "../../components/ui/Container.astro";
+
+import Gallery from "../../components/Gallery.tsx";
+import { createRandomizedGalleryImages } from "../../lib/portfolio.ts";
 
 const testimonials = await getCollection("testimonials");
+
+const renderedTestimonials = await Promise.all(
+  testimonials.map(async (entry) => {
+    const { Content } = await render(entry);
+
+    return {
+      entry,
+      Content,
+    };
+  }),
+);
 
 const breadcrumbs = [{ label: "Home", href: "/" }, { label: "Testimonials" }];
 ---
 
 <MainLayout title="Testimonials - Through Indonesia" breadcrumbs={breadcrumbs}>
-  <div class="mt-6">
-    {
-      testimonials.map((testimony) => (
-        <div class="p-6 border border-gray-700 mb-6 mx-4 rounded-3xl">
-          <div class="flex items-center justify-center">
-            <div class="mr-1">{testimony.data.name}</div>
-            <div>from {testimony.data.country}</div>
+  <Container>
+    <h1 class="text-4xl md:text-9xl">TESTIMONIALS</h1>
+    <hr class="mt-10 mb-6 border-secondary" />
+    <div class="my-6 columns-1 md:columns-2 gap-1 space-y-1">
+      {
+        renderedTestimonials.map(({ entry, Content }) => (
+          <div class="break-inside-avoid bg-secondary/15 hover:bg-accent/20 p-3 text-justify ">
+            <Content />
+
+            <div class="mt-4 text-center">{entry.data.name}</div>
+            <div class="text-secondary text-center">{entry.data.country}</div>
           </div>
-          <hr class="my-2" />
-          <div>{testimony.data.testimony}</div>
-        </div>
-      ))
-    }
-  </div>
+        ))
+      }
+    </div>
+    <Gallery
+      masonry={true}
+      images={createRandomizedGalleryImages()}
+      client:visible
+    />
+  </Container>
 </MainLayout>

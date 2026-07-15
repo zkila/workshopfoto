@@ -18,6 +18,7 @@ export interface GalleryImage {
   filename: string;
   width: number;
   height: number;
+  alt: string;
 }
 
 
@@ -35,24 +36,46 @@ export function createGalleryImages(
   return files.map((file) => {
     const dimensions = manifest[`${folder}/${file}`];
 
-    if (journal){
-      return {
-      url: `${R2_BASE}/assets/article/${folder}/${file}`,
-      filename: file.replace(/\.[^/.]+$/, ""),
-      width: dimensions.width,
-      height: dimensions.height,
-      alt: dimensions.caption
-    };
-    } else {
-      return {
-      url: `${R2_BASE}/assets/portfolio/${folder}/${file}`,
-      filename: file.replace(/\.[^/.]+$/, ""),
-      width: dimensions.width,
-      height: dimensions.height,
-      alt: dimensions.caption
-    };
-    }
+    return {
+        url: journal
+          ? `${R2_BASE}/assets/article/${folder}/${file}`
+          : `${R2_BASE}/assets/portfolio/${folder}/${file}`,
+        filename: file.replace(/\.[^/.]+$/, ""),
+        width: dimensions.width,
+        height: dimensions.height,
+        alt: dimensions.caption,
+      };
   });
+}
+
+export function createRandomizedGalleryImages(
+  
+): GalleryImage[] {
+  const images: GalleryImage[] = Object.entries(manifest).map(
+    ([path, dimensions]) => {
+      const [folder, file] = path.split("/");
+
+      const basePath = folder.startsWith("journal")
+        ? "article"
+        : "portfolio";
+
+      return {
+        url: `${R2_BASE}/assets/${basePath}/${folder}/${file}`,
+        filename: file.replace(/\.[^/.]+$/, ""),
+        width: dimensions.width,
+        height: dimensions.height,
+        alt: dimensions.caption,
+      };
+    },
+  );
+
+  // Fisher–Yates shuffle
+  for (let i = images.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [images[i], images[j]] = [images[j], images[i]];
+  }
+
+  return  images;
 }
 
 const portfolios: Record<string, Omit<Portfolio, "slug">> = {
@@ -139,7 +162,7 @@ export function getPortfolio(
   return {
     slug,
     title: item.title,
-    images: item.images,
+    images: item.images
   };
 }
 
